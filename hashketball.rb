@@ -52,8 +52,13 @@ def game_hash
         ]
     },
     :away => {
+<<<<<<< HEAD
       :team_name => "Charlotte Hornets",
       :colors => ["Turquoise", "Purple"],
+=======
+      :team_name => "Charlotte Hornetts",
+      :colors => ["Turqoise", "Purple"],
+>>>>>>> 2064a56d3b158b1bf59297c35db05b886d868630
       :players => [      
         {:player_name => "Jeff Adrien",
         :number => 4,
@@ -104,6 +109,7 @@ def game_hash
     }
   }
 end   
+<<<<<<< HEAD
 
 def num_points_scored(ptosearch)
   teams = game_hash
@@ -285,6 +291,36 @@ end
 
 
 
+=======
+>>>>>>> 2064a56d3b158b1bf59297c35db05b886d868630
 
+def num_points_scored(ptosearch)
+  teams = game_hash
+  #p teams[:home][:players]
+  teams.each_pair do |hoa, teaminfo|
+    #p hoa
+    teaminfo[:players].each do |playerindex|
+      if playerindex.has_value?(ptosearch)
+        puts "found #{ptosearch} #{playerindex[:points]}"
+        return playerindex[:points]
+      end 
+    end  
+  end 
+end   
 
+def player_stats(ptosearch)
+  teams = game_hash
+  teams.each_pair do |hoa, teaminfo|
+    teaminfo[:players].each do |playerindex|
+      if playerindex.has_value?(ptosearch)
+      ptosearch = playerindex
+      ptosearch.delete(:player_name)
+      return ptosearch
+      end 
+    end 
+  end
+end   
 
+def shoe_size(ptosearch)
+  p player_stats
+end   
